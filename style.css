@@ -1,0 +1,88 @@
+@layer header,
+banner,
+cards,
+form,
+footer;
+
+@layer header {
+    .nav-hali{
+        color: rgb(2, 128, 2) !important;
+    }
+
+    .butn-light:hover{
+        color: black;
+    }
+}
+
+@layer banner {
+    .banner__container--size {
+        height: 70vh;
+    }
+
+    #banner>div>img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@layer cards {
+    .badge_color{
+        background-color: rgba(15, 123, 124, 0.588) !important;
+    }
+
+    #cards1>div>div>img{
+        height: 40vh !important;
+    }
+}
+
+@layer form {
+    .button-send {
+        background-color: rgba(6, 217, 73, 0.799) !important;
+    }
+
+    #btn-send:hover {
+        background-color: rgba(4, 159, 53, 0.799) !important;
+        color: rgb(247, 245, 245) !important;
+        box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+        transition: all 0.2s ease;
+    }
+
+    .sub-text{
+        font-size: 0.9rem;
+        color: gray;
+    }
+}
+
+@layer footer {
+    footer {
+        font-size: 0.9rem;
+    }
+
+    footer a {
+        text-decoration: none !important;
+        color: white !important;
+        transition: .5s all;
+        -webkit-transition: .5s all;
+        -moz-transition: .5s all;
+        -ms-transition: .5s all;
+        -o-transition: .5s all;
+    }
+
+    footer a:hover {
+        color: rgb(148, 161, 161) !important;
+        transform: scale(1.1);
+        transition: .5s all;
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        -webkit-transition: .5s all;
+        -moz-transition: .5s all;
+        -ms-transition: .5s all;
+        -o-transition: .5s all;
+    }
+
+    footer div {
+        color: white
+    }
+}
