@@ -51,6 +51,16 @@ footer;
         font-size: 0.9rem;
         color: gray;
     }
+
+    .promo{
+        border-width: 1px;
+    }
+
+    .total{
+        border-width: 1px;
+        border-radius: 3px;
+        background-color:darkgrey;
+    }
 }
 
 @layer footer {

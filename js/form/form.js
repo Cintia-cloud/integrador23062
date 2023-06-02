@@ -1,0 +1,3 @@
+// CONFIGURACION
+
+totalTag.innerText = totalText
