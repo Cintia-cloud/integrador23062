@@ -1,101 +1,98 @@
-var gravedad = .5;
-var numHijos = 50;
+var gravity = .5;
+var numChildren = 50;
 
-var numParticulas = 100;
-var particulasCreadas = 0;
+var numParticles = 100;
+var particlesCreated = 0;
 
-function crearParticula() {
-	var particula = document.createElement("div");
-	particula.className="particula";
+function createParticle() {
+	var particle = document.createElement("div");
+	particle.className="particle";
 
 	var y = window.innerHeight;
 	var x = Math.random() * window.innerWidth;
 
-	particula.style.top = y + "px";
-	particula.style.left = x + "px";
+	particle.style.top = y + "px";
+	particle.style.left = x + "px";
 
-	var velocidadY = -15 - (Math.random() * 15);
+	var velocityY = -15 - (Math.random() * 15);
 
-	particula.setAttribute("data-velocidad-y", velocidadY);
-	particula.setAttribute("data-velocidad-x", "0");
-	particula.setAttribute("data-padre", "true");
+	particle.setAttribute("data-velocity-y", velocityY);
+	particle.setAttribute("data-velocity-x", "0");
+	particle.setAttribute("data-father", "true");
 
-	particula.style.background = getRandomColor();
+	particle.style.background = getRandomColor();
 
-	document.getElementsByTagName("body")[0].append(particula);
+	document.getElementsByTagName("body")[0].append(particle);
 
-	particulasCreadas++;
+	particlesCreated++;
 
-	if (particulasCreadas < numParticulas) {
-	    setTimeout(crearParticula, 50 + (Math.random() * 150));
+	if (particlesCreated < numParticles) {
+	    setTimeout(createParticle, 50 + (Math.random() * 150));
 	}
 }
 
 function start() {
-	crearParticula();
+	createParticle();
 }
 
 function update() {
-	var particulas = document.getElementsByClassName("particula");
-	for (var p=0; p < particulas.length; p++) {
-		var particula = particulas[p];
+	var particles = document.getElementsByClassName("particle");
+	for (var p=0; p < particles.length; p++) {
+		var particle = particles[p];
 
-		var velocidadY = parseFloat(particula.getAttribute("data-velocidad-y"));
-		velocidadY += gravedad;
+		var velocityY = parseFloat(particle.getAttribute("data-velocity-y"));
+		velocityY += gravity;
 
-		particula.setAttribute("data-velocidad-y", velocidadY);
+		particle.setAttribute("data-velocity-y", velocityY);
 
-		var top = particula.style.top ? particula.style.top : "0"; //10px
+		var top = particle.style.top ? particle.style.top : "0"; 
 		top = parseFloat(top.replace("px", ""));
-		top += velocidadY;
-		particula.style.top = top + "px";
+		top += velocityY;
+		particle.style.top = top + "px";
 
-		var velocidadX = parseFloat(particula.getAttribute("data-velocidad-x"));
+		var velocityX = parseFloat(particle.getAttribute("data-velocity-x"));
 
-		var left = particula.style.left ? particula.style.left : "0";
+		var left = particle.style.left ? particle.style.left : "0";
 		left = parseFloat(left.replace("px", ""));
-		left += velocidadX;
-		particula.style.left = left + "px";
+		left += velocityX;
+		particle.style.left = left + "px";
 
-		var padre = particula.getAttribute("data-padre");
+		var father = particle.getAttribute("data-father");
 
-		if (velocidadY >= 0 && padre === "true") {
-			explotar(particula);
+		if (velocityY >= 0 && father === "true") {
+			explode(particle);
 		}
 
 		if (top > window.innerHeight) {
-			particula.remove();
+			particle.remove();
 		}
 	}
 
 	setTimeout(update, 20);
 }
 
-function explotar(particula) {
+function explode(particle) {
 
-	for (var h=0; h < numHijos; h++) {
-		var hijo = document.createElement("div");
-		hijo.className = "particula";
+	for (var h=0; h < numChildren; h++) {
+		var child = document.createElement("div");
+		child.className = "particle";
 
-		hijo.style.top = particula.style.top;
-		hijo.style.left = particula.style.left;
-		hijo.style.background = particula.style.background;
+		child.style.top = particle.style.top;
+		child.style.left = particle.style.left;
+		child.style.background = particle.style.background;
 
-		var velocidadY = (Math.random() * 20) - 18;
-		hijo.setAttribute("data-velocidad-y", velocidadY);
-		var velocidadX = (Math.random() * 16) - 8;
-		hijo.setAttribute("data-velocidad-x", velocidadX);
+		var velocityY = (Math.random() * 20) - 18;
+		child.setAttribute("data-velocity-y", velocityY);
+		var velocityX = (Math.random() * 16) - 8;
+		child.setAttribute("data-velocity-x", velocityX);
 
+		child.setAttribute("data-father", false);
 
-		hijo.setAttribute("data-padre", false);
-
-		//Agregar el hijo :) :) :)
-		document.getElementsByTagName("body")[0].append(hijo);
+		document.getElementsByTagName("body")[0].append(child);
 	}
 
-    particula.remove();
+    particle.remove();
 }
-
 
 window.onload = function() {
 	start();
@@ -104,7 +101,6 @@ window.onload = function() {
 };
 
 
-//utilerias
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';

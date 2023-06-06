@@ -12,5 +12,5 @@ const categories = {
 const totalText = 'Total a pagar: $'
 
 let category = null
-let tickets = null
+let quantity = null
 let total = null

@@ -4,4 +4,6 @@ let selected = null
 
 // DOM
 
-const cardsContainer = document.getElementsByClassName('promo')
+const cards = document.getElementsByClassName('promo')
+const cardsContainer = document.querySelectorAll('.btn.card')
+

@@ -128,24 +128,24 @@
         </section>
         <section id="form">
           <div class="card-group m-5 gap-3">
-            <div class="card border border-2 border-primary bg-transparent promo" data-index="0">
-              <div class="card-body text-center py-4">
+            <div class="btn card border border-2 border-primary bg-transparent" data-index="0">
+              <div class="card-body text-center py-4 promo">
                 <h5>Estudiante</h5>
                 <p class="mb-2">Tienen un descuento</p>
                 <h5>80%</h5>
                 <p class="text-muted">* presentar documentación</p>
               </div>
             </div>
-            <div class="card border border-2 border-success bg-transparent promo" data-index="1">
-              <div class="card-body text-center py-4">
+            <div class="btn card border border-2 border-success bg-transparent promo" data-index="1">
+              <div class="card-body text-center py-4 promo">
                 <h5>Jubilado</h5>
                 <p class="mb-2">Tienen un descuento</p>
                 <h5>50%</h5>
                 <p class="text-muted">* presentar documentación</p>
               </div>
             </div>
-            <div class="card border border-2 border-warning bg-transparent promo" data-index="2">
-              <div class="card-body text-center py-4">
+            <div class="btn card border border-2 border-warning bg-transparent" data-index="2">
+              <div class="card-body text-center py-4 promo">
                 <h5>Residente</h5>
                 <p class="mb-2">Tienen un descuento</p>
                 <h5>15%</h5>
@@ -161,26 +161,38 @@
             <div class="d-flex flex-column align-items-center ms-2 my-2">
               Bus turístico por la ciudad de Paraná.
             </div>
-            <form name="formulario" class="px-4">
+            <form name="formBuy" class="px-4">
               <div class="row justify-content-around my-2">
                     <div class="col-6">
-                      <input type="text" class="form-control" id="inputName" placeholder="Nombre">
+                      <input type="text" class="form-control" id="inputName" placeholder="Nombre" required>
+                      <div class="invalid-feedback">
+                        Nombre es requerido.
+                      </div>
                     </div>
                     <div class="col-6">
-                      <input type="text" class="form-control" id="inputLastname" placeholder="Apellido">
+                      <input type="text" class="form-control" id="inputLastname" placeholder="Apellido" required>
+                      <div class="invalid-feedback">
+                        Apellido es requerido.
+                      </div>
                     </div>
               </div>
               <div d-flex flex-column>
-                <input type="email" class="form-control" id="inputCorreo" placeholder="correo@ejemplo.com">
+                <input type="email" class="form-control" id="inputEmail" placeholder="correo@ejemplo.com" required>
+                <div class="invalid-feedback">
+                  Correo electrónico inválido.
+                </div>
               </div>
               <div class="row justify-content-around my-2">
                 <div class="col-md-6">
                   <label for="inputQuantity" class="form-label">Cantidad</label>
-                  <input type="number" class="form-control" id="inputQuantity" required="">
+                  <input type="number" class="form-control" id="inputQuantity" required>
+                  <div class="invalid-feedback">
+                    Cantidad inválida.
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <label for="inputCategory" class="form-label">Categoría</label>
-                  <select class="form-select" id="inputCategory" required="">
+                  <select class="form-select" id="inputCategory" required>
                     <option selected="" value="none">Seleccione...</option>
                     <option value="a">Estudiante</option>
                     <option value="b">Jubilado</option>
@@ -188,7 +200,7 @@
                     <option value="d">Ninguna</option>
                   </select>
                   <div class="invalid-feedback">
-                    Por favor seleccione una opción válida. 
+                    Seleccione una categoría. 
                   </div>
                 </div>
               </div>
@@ -198,10 +210,10 @@
               </div>
               <div class="row justify-content-around my-2">
                 <div class="col-6">
-                  <button id="btn-clear" class="btn button-send w-100 fw-bold">Borrar</button>
+                  <button id="btn-clear" class="btn btn-success w-100 fw-bold text-dark">Borrar</button>
                 </div>
                <div class="col-6">
-                  <button id="btn-buy" class="btn button-send w-100 fw-bold">Comprar</button>
+                  <button id="btn-buy" class="btn btn-success w-100 fw-bold text-dark" type="submit">Comprar</button>
                 </div>
               </div>
             </form>

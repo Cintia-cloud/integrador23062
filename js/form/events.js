@@ -1,16 +1,22 @@
 // EVENTS
 
-const resetCategories = () => {
-    total = null
-    selected = null
-    category = null
-    eventsAssignmentAll()
-    totalTag.innerText = totalText
+const setName = (e) => {
+    inpName.classList.remove('is-invalid')
+}
+
+const setLastname = (e) => {
+    inpLastname.classList.remove('is-invalid')
+}
+
+const setEmail = (e) => {
+    inpEmail.classList.remove('is-invalid')
 }
 
 const setCategory = (e) => {
 
     const option = e.target.value
+
+    inpCategory.classList.remove('is-invalid')
 
     if (option === 'none') {
         resetCategories()
@@ -32,12 +38,14 @@ const setCategory = (e) => {
 
     eventsAssignmentAll()
 
-    totalPrice(tickets, category, price, categories[category].percent, totalText)
+    calculatePrice(quantity, category, price, categories[category].percent, totalText)
 }
 
-const setTicket = (e) => {
+const setQuantity = (e) => {
 
     const { value } = e.target
+
+    inpQuantity.classList.remove('is-invalid')
 
     if (value < 0 || isNaN(value)) {
         e.target.value = 0
@@ -45,12 +53,20 @@ const setTicket = (e) => {
         return
     }
 
-    tickets = value
+    quantity = value
 
     if(category != null){
-        totalPrice(tickets, category, price, categories[category].percent, totalText)
+        calculatePrice(quantity, category, price, categories[category].percent, totalText)
     }
 
+}
+
+const resetCategories = () => {
+    total = null
+    selected = null
+    category = null
+    eventsAssignmentAll()
+    totalTag.innerText = totalText
 }
 
 // EVENTS: BUTTONS
@@ -74,9 +90,34 @@ const buyTickets = (e) => {
     const verified = {
         firstname: inputName.value !== '',
         lastname: inputLastname.value !== '',
-        email: inputCorreo.value.includes('@'),
-        tickets: inputQuantity.value > 0,
+        email: inputEmail.value.includes('@'),
+        quantity: inputQuantity.value > 0,
         category: inputCategory.value !== 'none'
+    }
+
+    if(inputName.value === '')
+    {
+        inpName.classList.add('is-invalid')
+    }
+
+    if(inputLastname.value === '')
+    {
+        inpLastname.classList.add('is-invalid')
+    }
+
+    if (!inputEmail.value.includes('@'))
+    {
+        inpEmail.classList.add('is-invalid')
+    }
+
+    if (inputQuantity.value <= 0)
+    {
+        inpQuantity.classList.add('is-invalid')
+    }
+
+    if (inputCategory.value === 'none')
+    {
+        inpCategory.classList.add('is-invalid')
     }
 
     const values = Object.values(verified)
@@ -91,11 +132,19 @@ const buyTickets = (e) => {
 }
 
 // ASIGNACION DE EVENTOS
+form.inputName.addEventListener('change', setName)
+form.inputName.addEventListener('keyup', setName)
+
+form.inputLastname.addEventListener('change', setLastname)
+form.inputLastname.addEventListener('keyup', setLastname)
+
+form.inputEmail.addEventListener('change', setEmail)
+form.inputEmail.addEventListener('keyup', setEmail)
 
 form.inputCategory.addEventListener('change', setCategory)
 
-form.inputQuantity.addEventListener('change', setTicket)
-form.inputQuantity.addEventListener('keyup', setTicket)
+form.inputQuantity.addEventListener('change', setQuantity)
+form.inputQuantity.addEventListener('keyup', setQuantity)
 
 resetBtn.addEventListener('click', reset)
 buyBtn.addEventListener('click', buyTickets)

@@ -1,10 +1,10 @@
 // UTILS
 
-const totalPrice = (valTicket, valCategory, valPrice, valCategories, valTotalText) => {
+const calculatePrice = (valQuantity, valCategory, valPrice, valCategories, valTotalText) => {
 
-    if (!valTicket || !valCategory) return;
+    if (!valQuantity || !valCategory) return;
 
-    const totalValue = valPrice * valTicket
+    const totalValue = valPrice * valQuantity
     const discount = (totalValue / 100) * valCategories
 
     total = totalValue - discount

@@ -1,4 +1,4 @@
-.particula {
+.particle {
     width: 8px;
     height: 8px;
     background: black;
@@ -6,7 +6,7 @@
     position: absolute;
 }
 
-.particula[data-padre="false"] {
+.particle[data-father="false"] {
     width: 5px;
     height: 5px;
 }
@@ -14,12 +14,5 @@
 body, html {
     overflow-y: hidden;
     overflow-x: hidden;
-
-    background: black;
 }
 
-#fondo {
-    position: absolute;
-    bottom: -100px;
-    opacity: .4;
-}

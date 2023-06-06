@@ -24,5 +24,21 @@ const changeAllColor = (containerALL) => {
             containerALL[i].classList.replace(colors[j], transparent)
         }
     }
+}
 
+const matchCategory = (selection) => {
+
+    switch (selection) {
+        case "0":
+            form.inputCategory.value = 'a'
+            break
+        case "1":
+            form.inputCategory.value = 'b'
+            break
+        case "2":
+            form.inputCategory.value = 'c'
+            break
+        default:
+            throw new Error('No se pudo asociar la categoría.')
+    }
 }
