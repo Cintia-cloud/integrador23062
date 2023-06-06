@@ -13,6 +13,8 @@ const cardLeave = (e) => {
 const cardClick = (e) => {
     selected = e.currentTarget.dataset.index
     matchCategory(selected)
+    form.inputCategory.value
+    calculatePrice(form.inputQuantity.value, form.inputCategory.value, price, categories[form.inputCategory.value].percent, totalText)
     eventsAssignmentAll()
 }
 

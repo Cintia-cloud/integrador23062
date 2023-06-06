@@ -24,6 +24,7 @@ const setCategory = (e) => {
     }
 
     category = option
+
     const index = categories[category].value
     const container = cardsContainer[index]
 
@@ -38,7 +39,7 @@ const setCategory = (e) => {
 
     eventsAssignmentAll()
 
-    calculatePrice(quantity, category, price, categories[category].percent, totalText)
+    calculatePrice(inputQuantity.value, category, price, categories[category].percent, totalText)
 }
 
 const setQuantity = (e) => {
@@ -59,8 +60,8 @@ const setQuantity = (e) => {
         totalTag.innerText = totalText
     }
 
-    if(category != null){
-        calculatePrice(quantity, category, price, categories[category].percent, totalText)
+    if(inputCategory.value != null){
+        calculatePrice(quantity, inputCategory.value, price, categories[inputCategory.value].percent, totalText)
     }
 
 }
@@ -128,11 +129,13 @@ const buyTickets = (e) => {
     const submitAccepted = values.every(value => value)
 
     submitAccepted
-        ? location.href = './ticket_confirm.html'
-        :  Swal.fire({
-          icon: 'error',
-          text: 'Debe completar todos los campos correctamente.'
-        })
+        ?  location.href = './ticket_confirm.html'        
+        :  
+            swalWithBootstrapButtons.fire({
+                icon: 'error',
+                text: 'Debe completar todos los campos correctamente.',
+                confirmButtonText: 'Ok',
+            })
 }
 
 // ASIGNACION DE EVENTOS
