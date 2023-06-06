@@ -55,6 +55,10 @@ const setQuantity = (e) => {
 
     quantity = value
 
+    if (quantity === "") {
+        totalTag.innerText = totalText
+    }
+
     if(category != null){
         calculatePrice(quantity, category, price, categories[category].percent, totalText)
     }
